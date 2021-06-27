@@ -1,1 +1,23 @@
-<p>chat-view works!</p>
+<mat-drawer-container class="container">
+    <mat-drawer class="menu" mode="side" opened>
+        <div>
+            <img class="logo" src="/assets/img/logo.png"/>
+        </div>
+        
+        <div>
+            <button class="section selected" type="button">Chat</button>
+        </div>
+        
+        <div>
+            <button class="section" type="button">Perfil</button>
+        </div>
+        
+        <div class="logout">
+            <span (click)="logout()">Cerrar Sesión</span>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content class="page-content">
+        Chat content!
+    </mat-drawer-content>
+</mat-drawer-container>
+  

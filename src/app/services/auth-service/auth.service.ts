@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -59,16 +60,24 @@ export class AuthService {
   }
 
   // Sign up with email/password
-  SignUp(email, password) {
+  SignUp(email, password,alias) {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
+
+        result.user.updateProfile({
+          displayName: alias,
+          photoURL: environment.baseWebUrl+"/assets/img/default-image.png"
+        }).then(() => {
+          this.SignIn(email, password);
+          //this.SetUserData(result.user);
+        });
         
         // TODO: In a future version release
         //this.SendVerificationMail();
         
-        this.SetUserData(result.user);
+        //this.SetUserData(result.user);
       }).catch((error) => {
         window.alert(error.message)
       })
