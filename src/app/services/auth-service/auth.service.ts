@@ -25,11 +25,14 @@ export class AuthService {
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user'));
+        //JSON.parse(localStorage.getItem('user'));
       } else {
-        localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
+        this.userData = null;
+        localStorage.removeItem('user');
+        //JSON.parse(localStorage.getItem('user'));
       }
+      console.log("Service userdata: ");
+      console.log(this.userData);
     })
     
   }
@@ -52,8 +55,11 @@ export class AuthService {
         */
         this.SetUserData(result.user);
         this.ngZone.run(() => {
-          this.router.navigate(['/chat']);
-        });    
+          //console.log(localStorage.getItem('user'));
+          
+        });   
+        //this.router.navigate(['/chat']); 
+        
       }).catch((error) => {
         window.alert(error.message)
       })
@@ -131,7 +137,7 @@ export class AuthService {
   // Sign out 
   SignOut() {
     return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
+      //localStorage.removeItem('user');
       this.router.navigate(['/login']);
     })
   }

@@ -3,15 +3,12 @@
         <div>
             <img class="logo" src="/assets/img/logo.png"/>
         </div>
-        
-        <div>
-            <button class="section selected" type="button">Chat</button>
+        <div class="section selected">
+            <img *ngIf="userData && userData.photoURL" [src]="userData.photoURL"/><span>Chat</span>
         </div>
-        
-        <div>
-            <button class="section" type="button">Perfil</button>
+        <div class="section">
+            <button type="button">Perfil</button>
         </div>
-        
         <div class="logout">
             <span (click)="logout()">Cerrar Sesión</span>
         </div>
