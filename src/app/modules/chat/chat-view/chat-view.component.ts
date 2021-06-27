@@ -18,7 +18,7 @@ export class ChatViewComponent implements OnInit {
 
   public userData = null;
   
-  constructor(public authService: AuthService, public afAuth: AngularFireAuth,) { }
+  constructor(public authService: AuthService, public afAuth: AngularFireAuth) { }
 
   ngOnInit() {
     //this.userData = JSON.parse(localStorage.getItem('user'));
@@ -39,16 +39,7 @@ export class ChatViewComponent implements OnInit {
     });
     
   }
-/*
-  ngAfterContentInit() {
-    console.log("AfterContentInit");
-    console.log(localStorage.getItem('user'));
-    if(localStorage.getItem('user') !== null){
-      this.userData = JSON.parse(localStorage.getItem('user'));
-    }
-    console.log("ADIOS");
-  }
-*/
+
   logout(){
     this.authService.SignOut();
   }

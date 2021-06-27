@@ -4,10 +4,16 @@
             <img class="logo" src="/assets/img/logo.png"/>
         </div>
         <div class="section selected">
-            <img *ngIf="userData && userData.photoURL" [src]="userData.photoURL"/><span>Chat</span>
+            <div class="image">
+                <img class="chat" src="/assets/img/chat.png"/>
+            </div>
+            <div class="text">Chat</div>
         </div>
-        <div class="section">
-            <button type="button">Perfil</button>
+        <div class="section" routerLink='/profile'>
+            <div class="image">
+                <img *ngIf="userData && userData.photoURL" [src]="userData.photoURL"/>
+            </div>
+            <div class="text">Perfil</div>
         </div>
         <div class="logout">
             <span (click)="logout()">Cerrar Sesión</span>

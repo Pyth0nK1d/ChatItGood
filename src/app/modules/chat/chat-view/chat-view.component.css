@@ -15,10 +15,35 @@
     margin: 10px;
 }
 
-.section > img {
+.section {
+    padding: 10px;
+    margin-left: -20px;
+}
+.section:hover{
+    background-color: #ff7373;
+    cursor: pointer;
+}
+
+.section.selected {
+    background-color: #ff3838;
+    font-weight: bold;
+    cursor: auto;
+}
+
+.section > .image > img {
     width: 50px;
     height: 50px;
     border-radius: 50px;
+}
+
+.section > .image > .chat {
+    border-radius: 0;
+}
+
+.section > .text, .section > .image  {
+    margin-left: 20px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .logout {

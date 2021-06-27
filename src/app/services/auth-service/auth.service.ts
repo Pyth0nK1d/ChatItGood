@@ -31,8 +31,6 @@ export class AuthService {
         localStorage.removeItem('user');
         //JSON.parse(localStorage.getItem('user'));
       }
-      console.log("Service userdata: ");
-      console.log(this.userData);
     })
     
   }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './services/user/auth.guard';
 import { OnDemandPreloadStrategy } from './strategies/on-demand-preload-strategy';
 
 const routes: Routes = [
@@ -16,12 +17,14 @@ const routes: Routes = [
   {
     path: 'chat',
     loadChildren: () => import('./modules/chat/chat.module').then(m => m.ChatModule),
-    data: {preload: false} 
+    data: {preload: false},
+    canActivate: [AuthGuard], 
   },
   {
     path: 'profile',
     loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule),
-    data: {preload: false} 
+    data: {preload: false},
+    canActivate: [AuthGuard],
   },
   {
     path: '',

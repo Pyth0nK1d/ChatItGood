@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseWebUrl: "http://localhost:4200",
+  baseWebUrl: "",
   firebase: {
     apiKey: "AIzaSyBUKtstduEJu1iM2efDuUV0lBpv6QMrtCQ",
     authDomain: "chatitgood.firebaseapp.com",

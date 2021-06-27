@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
   templateUrl: './login-view.component.html',
   styleUrls: ['./login-view.component.css']
 })
-export class LoginViewComponent {
+export class LoginViewComponent implements OnInit {
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -15,6 +15,13 @@ export class LoginViewComponent {
   });
 
   constructor(public authService: AuthService, public router: Router) { }
+
+  ngOnInit() {
+    this.loginForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required]),
+    });
+  }
 
   onSubmit() {
     this.authService.SignIn(this.loginForm.value.email, this.loginForm.value.password);
