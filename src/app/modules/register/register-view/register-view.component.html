@@ -1,1 +1,29 @@
-<p>register-view works!</p>
+<div class="container">
+    <div class="content">
+        <img class="logo" src="assets/img/logo.png"/>
+        
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <input id="alias" type="text" placeholder="Alias" formControlName="alias">
+            <br/>
+            <input id="email" type="text" placeholder="Email" formControlName="email">
+            <br/>
+            <input id="password" type="password" placeholder="Contraseña" formControlName="password" (change)="onPasswordChange()">
+            <br/>
+            <input id="repeat-password" type="password" placeholder="Repetir contraseña" formControlName="repeatPassword" (change)="onPasswordChange()">
+            <br/>
+            <div class="customError" *ngIf="password.hasError('minlength')">
+                <span>Longitud mínima de contraseña: 6</span>
+                <br/>
+            </div>
+            <div class="customError" *ngIf="repeat_password.hasError('mismatch')">
+                <span>Las contraseñas no coinciden.</span>
+                <br/>
+            </div>
+            <div class="button-group">
+                <button class="mat-button redirect-button" routerLink='/login' type="button">Inicio</button>
+                <button class="mat-button action-button" type="submit" [disabled]="!registerForm.valid">Registro</button>
+            </div>
+        </form>
+    </div>
+    
+</div>

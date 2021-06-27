@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  baseWebUrl: "",
   firebase: {
     apiKey: "AIzaSyBUKtstduEJu1iM2efDuUV0lBpv6QMrtCQ",
     authDomain: "chatitgood.firebaseapp.com",

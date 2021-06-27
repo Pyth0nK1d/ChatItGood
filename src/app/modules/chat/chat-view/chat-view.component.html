@@ -1,1 +1,26 @@
-<p>chat-view works!</p>
+<mat-drawer-container class="container">
+    <mat-drawer class="menu" mode="side" opened>
+        <div>
+            <img class="logo" src="/assets/img/logo.png"/>
+        </div>
+        <div class="section selected">
+            <div class="image">
+                <img class="chat" src="/assets/img/chat.png"/>
+            </div>
+            <div class="text">Chat</div>
+        </div>
+        <div class="section" routerLink='/profile'>
+            <div class="image">
+                <img *ngIf="userData && userData.photoURL" [src]="userData.photoURL"/>
+            </div>
+            <div class="text">Perfil</div>
+        </div>
+        <div class="logout">
+            <span (click)="logout()">Cerrar Sesión</span>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content class="page-content">
+        Chat content!
+    </mat-drawer-content>
+</mat-drawer-container>
+  

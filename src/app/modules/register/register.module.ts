@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterViewComponent } from './register-view/register-view.component';
+import { MaterialDesignModule } from '../material-design/material-design.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +13,10 @@ import { RegisterViewComponent } from './register-view/register-view.component';
   ],
   imports: [
     CommonModule,
-    RegisterRoutingModule
+    RegisterRoutingModule,
+    MaterialDesignModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class RegisterModule { }
