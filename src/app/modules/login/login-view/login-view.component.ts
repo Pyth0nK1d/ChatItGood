@@ -25,7 +25,6 @@ export class LoginViewComponent implements OnInit {
 
   onSubmit() {
     this.authService.SignIn(this.loginForm.value.email, this.loginForm.value.password);
-    this.router.navigate(['/chat']); 
     /*
     // TODO: Change this for auth method statement
     if(this.loginForm.value.email === 'dprieto93@hotmail.com'){

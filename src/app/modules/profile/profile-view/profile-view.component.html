@@ -20,7 +20,34 @@
         </div>
     </mat-drawer>
     <mat-drawer-content class="page-content">
-        Profile content!
+        <div class="container-profile">
+            <div class="content">
+                <img class="profile-image" *ngIf="userData && userData.photoURL" [src]="userData.photoURL"/>
+                
+                <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                    <input id="alias" type="text" placeholder="Alias" formControlName="alias" *ngIf="userData" [(ngModel)]="userData.displayName">
+                    <br/>
+                    <input id="email" type="text" disabled="true" placeholder="Email" formControlName="email" *ngIf="userData" [(ngModel)]="userData.email">
+                    <br/>
+                    <input id="password" type="password" placeholder="Contraseña" formControlName="password" (change)="onPasswordChange()">
+                    <br/>
+                    <input id="repeat-password" type="password" placeholder="Repetir contraseña" formControlName="repeatPassword" (change)="onPasswordChange()">
+                    <br/>
+                    <div class="customError" *ngIf="password.hasError('minlength')">
+                        <span>Longitud mínima de contraseña: 6</span>
+                        <br/>
+                    </div>
+                    <div class="customError" *ngIf="repeat_password.hasError('mismatch')">
+                        <span>Las contraseñas no coinciden.</span>
+                        <br/>
+                    </div>
+                    <div class="button-group">
+                        <button class="mat-button action-button" style="width:100%" type="submit" [disabled]="!profileForm.valid">Actualizar perfil</button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
     </mat-drawer-content>
 </mat-drawer-container>
   

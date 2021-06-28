@@ -1,13 +1,13 @@
 <div class="container">
     <div class="content">
         <img class="logo" src="assets/img/logo.png"/>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="loginForm">
             <input id="email" type="text" placeholder="Email" formControlName="email">
             <br/>
             <input id="password" type="password" placeholder="Contraseña" formControlName="password">
             <br/>
             <div class="button-group">
-                <button class="mat-button action-button" type="submit" [disabled]="!loginForm.valid">Inicio</button>
+                <button class="mat-button action-button" type="submit" [disabled]="!loginForm.valid" (click)="onSubmit()">Inicio</button>
                 <button class="mat-button redirect-button" routerLink='/register' type="button">Registro</button>
             </div>
         </form>
