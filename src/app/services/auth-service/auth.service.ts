@@ -54,7 +54,7 @@ export class AuthService {
         this.SetUserData(result.user);
         this.ngZone.run(() => {
           //console.log(localStorage.getItem('user'));
-          
+          this.router.navigate(['/chat']); 
         });   
         //this.router.navigate(['/chat']); 
         
@@ -108,6 +108,36 @@ export class AuthService {
     })
   }
   */
+
+  async UpdateProfile(alias, email, password){
+    return (await this.afAuth.currentUser).updateProfile({
+      displayName: alias,
+      //photoURL: environment.baseWebUrl+"/assets/img/default-image.png"
+    }).then(async () => {
+      if(password.length > 0){
+        (await this.afAuth.currentUser).updatePassword(password).then(function() {
+          console.log("password updated");
+        }).catch(function(error){
+          console.error("Error al cambiar contraseña");
+          console.log(error);
+        });
+      }
+    });
+    
+    
+  }
+
+  async UpdateProfileImage(url){
+    return (await this.afAuth.currentUser).updateProfile({
+      //displayName: alias,
+      photoURL: url
+    }).then(async () => {
+      //this.userData.photoURL = url;
+      console.log("Profile image updated!");
+    });
+    
+    
+  }
 
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
