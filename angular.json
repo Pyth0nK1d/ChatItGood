@@ -9,6 +9,12 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "locales": {
+          "es": "/src/locale/messages.es.xlf",
+          "en": "/src/locale/messages.en.xlf"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -30,6 +36,12 @@
             "scripts": []
           },
           "configurations": {
+            "es": {
+              "localize": ["es"]
+            },
+            "en": {
+              "localize": ["en"]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -65,6 +77,12 @@
             "browserTarget": "ChatItGood:build"
           },
           "configurations": {
+            "es": {
+              "browserTarget": "ChatItGood:build:es"
+            },
+            "en": {
+              "browserTarget": "ChatItGood:build:en"
+            },
             "production": {
               "browserTarget": "ChatItGood:build:production"
             }

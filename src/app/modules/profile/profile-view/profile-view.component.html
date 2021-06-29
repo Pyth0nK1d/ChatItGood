@@ -7,16 +7,16 @@
             <div class="image">
                 <img class="chat" src="/assets/img/chat.png"/>
             </div>
-            <div class="text">Chat</div>
+            <div i18n class="text">Chat</div>
         </div>
         <div class="section selected">
             <div class="image">
                 <img *ngIf="userData && userData.photoURL" [src]="userData.photoURL"/>
             </div>
-            <div class="text">Perfil</div>
+            <div i18n class="text">Perfil</div>
         </div>
         <div class="logout">
-            <span (click)="logout()">Cerrar Sesión</span>
+            <span i18n (click)="logout()">Cerrar Sesión</span>
         </div>
     </mat-drawer>
     <mat-drawer-content class="page-content">
@@ -25,33 +25,33 @@
                 <img class="profile-image" *ngIf="userData && userData.photoURL" [src]="userData.photoURL"/>
                 
                 <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-                    <input id="alias" type="text" placeholder="Alias" formControlName="alias" *ngIf="userData" [(ngModel)]="userData.displayName">
+                    <input id="alias" type="text" i18n-placeholder placeholder="Alias" formControlName="alias" *ngIf="userData" [(ngModel)]="userData.displayName">
                     <br/>
-                    <input id="email" type="text" disabled="true" placeholder="Email" formControlName="email" *ngIf="userData" [(ngModel)]="userData.email">
+                    <input id="email" type="text" disabled="true" i18n-placeholder placeholder="Email" formControlName="email" *ngIf="userData" [(ngModel)]="userData.email">
                     <br/>
-                    <input id="password" type="password" placeholder="Contraseña" formControlName="password" (change)="onPasswordChange()">
+                    <input id="password" type="password" i18n-placeholder placeholder="Contraseña" formControlName="password" (change)="onPasswordChange()">
                     <br/>
-                    <input id="repeat-password" type="password" placeholder="Repetir contraseña" formControlName="repeatPassword" (change)="onPasswordChange()">
+                    <input id="repeat-password" type="password" i18n-placeholder placeholder="Repetir contraseña" formControlName="repeatPassword" (change)="onPasswordChange()">
                     <br/>
                     <div class="customError" *ngIf="password.hasError('minlength')">
-                        <span>Longitud mínima de contraseña: 6</span>
+                        <span i18n>Longitud mínima de contraseña: 6</span>
                         <br/>
                     </div>
                     <div class="customError" *ngIf="repeat_password.hasError('mismatch')">
-                        <span>Las contraseñas no coinciden.</span>
+                        <span i18n>Las contraseñas no coinciden.</span>
                         <br/>
                     </div>
                     <div class="button-group">
                         <button class="mat-button action-button image-update-button">
                             <label for="file">
-                                <span>Actualizar imagen</span>
+                                <span i18n>Actualizar imagen</span>
                                 <input type="file"
                                      id="file"
                                      hidden
                                      (change)="handleFileInput($event.target.files)">
                             </label>
                         </button>
-                        <button class="mat-button action-button" type="submit" [disabled]="!profileForm.valid">Actualizar perfil</button>
+                        <button i18n class="mat-button action-button" type="submit" [disabled]="!profileForm.valid">Actualizar perfil</button>
                     </div>
                 </form>
             </div>
