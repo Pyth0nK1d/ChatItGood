@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
+import { StorageService } from 'src/app/services/storage/storage.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -12,6 +13,7 @@ import { environment } from 'src/environments/environment';
 export class ProfileViewComponent implements OnInit {
 
   public userData = null;
+  fileToUpload: File | null = null;
 
   profileForm = new FormGroup({
     alias: new FormControl('', [Validators.required]),
@@ -21,7 +23,7 @@ export class ProfileViewComponent implements OnInit {
   });
 
   
-  constructor(public authService: AuthService, public afAuth: AngularFireAuth) { }
+  constructor(public authService: AuthService, public afAuth: AngularFireAuth, private storage: StorageService) { }
 
   ngOnInit() {
     //this.userData = JSON.parse(localStorage.getItem('user'));
@@ -64,6 +66,21 @@ export class ProfileViewComponent implements OnInit {
   
   get repeat_password(): AbstractControl {
     return this.profileForm.controls['repeatPassword'];
+  }
+
+  async handleFileInput(files: FileList) {
+    this.fileToUpload = files.item(0);
+    let metadata = { name: this.fileToUpload.name, size: this.fileToUpload.size };
+    await this.storage.createImage(`${this.fileToUpload.name}`, this.fileToUpload, metadata);
+    this.storage.getImage(this.fileToUpload.name)
+      .subscribe((url: string) => {
+        this.authService.UpdateProfileImage(url);
+        this.userData.photoURL = url;
+        /*
+        this.imagen.url = url;
+        this.actualizarImagen(url);
+        */
+      });
   }
 
   onSubmit() {

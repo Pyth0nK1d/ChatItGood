@@ -127,6 +127,18 @@ export class AuthService {
     
   }
 
+  async UpdateProfileImage(url){
+    return (await this.afAuth.currentUser).updateProfile({
+      //displayName: alias,
+      photoURL: url
+    }).then(async () => {
+      //this.userData.photoURL = url;
+      console.log("Profile image updated!");
+    });
+    
+    
+  }
+
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
