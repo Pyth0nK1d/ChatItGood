@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth-service/auth.service';
 import { environment } from '../../../../environments/environment';
 
@@ -17,6 +18,10 @@ export class ChatViewComponent implements OnInit {
   */
 
   public userData = null;
+
+  chatForm = new FormGroup({
+    message: new FormControl('', []),
+  });
   
   constructor(public authService: AuthService, public afAuth: AngularFireAuth) { }
 
@@ -38,6 +43,11 @@ export class ChatViewComponent implements OnInit {
       }
     });
     
+  }
+
+  sendMessage(){
+    console.log(this.chatForm.value.message);
+    this.chatForm.reset();
   }
 
   logout(){
