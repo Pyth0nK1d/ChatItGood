@@ -21,8 +21,13 @@
     </mat-drawer>
     <mat-drawer-content class="page-content">
         <div class="chat-container">
-            <div class="chat-content">
-                Chat messages
+            <div id="chat" class="chat-content">
+                <div *ngFor="let message of messageList">
+                    <div>{{message.alias}}</div>
+                    <div>{{message.email}}</div>
+                    <div>{{message.photoURL}}</div>
+                    <div>{{message.text}}</div>
+                </div>
             </div>
             <form [formGroup]="chatForm">
                 <div class="interact-group">

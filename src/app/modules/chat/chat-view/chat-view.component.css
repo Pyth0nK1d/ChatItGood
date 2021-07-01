@@ -75,11 +75,12 @@
 .chat-content {
     width: 100%;
     height: calc(100% - 86px);
+    overflow-y: scroll;
 }
 
 .interact-group {
     width: calc(100% - 6px);
-    height: 81px;
+    height: 80px;
     border: 3px solid grey;
     background-color: rgb(238, 238, 238);
 }
