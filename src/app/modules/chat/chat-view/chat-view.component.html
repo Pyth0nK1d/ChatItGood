@@ -22,11 +22,12 @@
     <mat-drawer-content class="page-content">
         <div class="chat-container">
             <div id="chat" class="chat-content">
-                <div *ngFor="let message of messageList">
-                    <div>{{message.alias}}</div>
-                    <div>{{message.email}}</div>
-                    <div>{{message.photoURL}}</div>
-                    <div>{{message.text}}</div>
+                <div class="message-container" *ngFor="let message of messageList">
+                    <div [ngClass]="{'message-box': true, 'own-message': userData.email === message.email}" >
+                        <img class="message-image"[src]="message.photoURL" />
+                        <div class="message-alias">@{{message.alias}}</div>
+                        <p>{{message.text}}</p>
+                    </div>
                 </div>
             </div>
             <form [formGroup]="chatForm">

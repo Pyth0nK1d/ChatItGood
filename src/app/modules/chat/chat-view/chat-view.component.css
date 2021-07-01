@@ -78,6 +78,49 @@
     overflow-y: scroll;
 }
 
+.chat-content > .message-container {
+    width:100%;
+    display:block;
+    min-height: 160px;
+}
+
+.chat-content > .message-container > .message-box {
+    float: left;
+    display: block;
+    border: 3px solid black;
+    padding: 10px;
+    margin: 40px 30px;
+    border-radius: 10px;
+    max-width: 50%;
+    background-color: lightgrey;
+    padding-top: 0;
+}
+
+.chat-content > .message-container > .own-message {
+    float:right;
+    display: block;
+    background-color: white;
+}
+
+.chat-content > .message-container > .message-box > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin-top: -35px;
+    margin-left: -35px;
+}
+
+.chat-content > .message-container > .message-box > .message-alias {
+    color: grey;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.chat-content > .message-container > .message-box > p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .interact-group {
     width: calc(100% - 6px);
     height: 80px;
