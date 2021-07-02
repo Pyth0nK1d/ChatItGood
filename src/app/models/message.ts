@@ -3,4 +3,5 @@ export interface Message {
     email: string;
     photoURL: string;
     text: string;
+    createdAt: Date;
  }
