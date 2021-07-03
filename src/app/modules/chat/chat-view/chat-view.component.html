@@ -1,0 +1,46 @@
+<mat-drawer-container class="container">
+    <mat-drawer class="menu" mode="side" opened>
+        <div>
+            <img class="logo" src="/assets/img/logo.png"/>
+        </div>
+        <div class="section selected">
+            <div class="image">
+                <img class="chat" src="/assets/img/chat.png"/>
+            </div>
+            <div i18n class="text">Chat</div>
+        </div>
+        <div class="section" routerLink='/profile'>
+            <div class="image">
+                <img *ngIf="userData && userData.photoURL" [src]="userData.photoURL"/>
+            </div>
+            <div i18n class="text">Perfil</div>
+        </div>
+        <div class="logout">
+            <span i18n (click)="logout()">Cerrar Sesión</span>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content class="page-content">
+        <div class="chat-container">
+            <div id="chat" class="chat-content">
+                <div class="message-container" *ngFor="let message of messageList">
+                    <div [ngClass]="{'message-box': true, 'own-message': userData.email === message.email}" >
+                        <img class="message-image"[src]="message.photoURL" />
+                        <div class="message-alias">@{{message.alias}}</div>
+                        <p>{{message.text}}</p>
+                    </div>
+                </div>
+            </div>
+            <form [formGroup]="chatForm">
+                <div class="interact-group">
+                    <div class="message-box">
+                        <input type="text" formControlName="message" i18n-placeholder placeholder="Escribe un mensaje"/>
+                    </div>
+                    <div class="send-btn">
+                        <button i18n class="mat-button" [disabled]="!this.chatForm.value.message" (click)="sendMessage()">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>
+  

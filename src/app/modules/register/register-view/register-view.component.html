@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="content">
+        <img class="logo" src="assets/img/logo.png"/>
+        
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <input id="alias" type="text" i18n-placeholder placeholder="Alias" formControlName="alias">
+            <br/>
+            <input id="email" type="text" i18n-placeholder placeholder="Email" formControlName="email">
+            <br/>
+            <input id="password" type="password" i18n-placeholder placeholder="Contraseña" formControlName="password" (change)="onPasswordChange()">
+            <br/>
+            <input id="repeat-password" type="password" i18n-placeholder placeholder="Repetir contraseña" formControlName="repeatPassword" (change)="onPasswordChange()">
+            <br/>
+            <div class="customError" *ngIf="password.hasError('minlength')">
+                <span i18n>Longitud mínima de contraseña: 6</span>
+                <br/>
+            </div>
+            <div class="customError" *ngIf="repeat_password.hasError('mismatch')">
+                <span i18n>Las contraseñas no coinciden.</span>
+                <br/>
+            </div>
+            <div class="button-group">
+                <button i18n class="mat-button redirect-button" routerLink='/login' type="button">Acceder</button>
+                <button i18n class="mat-button action-button" type="submit" [disabled]="!registerForm.valid">Registro</button>
+            </div>
+        </form>
+    </div>
+    
+</div>

@@ -1,0 +1,158 @@
+.container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.menu {
+    text-align: center;
+    background-color: azure;
+}
+
+.logo {
+    width: 200px;
+    height: 147px;
+    margin: 10px;
+}
+
+.section {
+    padding: 10px;
+    margin-left: -20px;
+}
+.section:hover{
+    background-color: #ff7373;
+    cursor: pointer;
+}
+
+.section.selected {
+    background-color: #ff3838;
+    font-weight: bold;
+    cursor: auto;
+}
+
+.section > .image > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.section > .image > .chat {
+    border-radius: 0;
+}
+
+.section > .text, .section > .image  {
+    margin-left: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.logout {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+}
+
+.logout > span {
+    color: red;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 0.1em;
+    border-bottom-width: 1px;
+}
+
+.logout > span:hover {
+    cursor: pointer;
+}
+
+
+
+
+.container-profile {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 218, 218);
+}
+
+.container-profile > .content {
+    padding-top: 12%;
+}
+
+.container-profile > .content > form {
+    display: block;
+}
+
+.container-profile > .content > form > input {
+    margin-bottom: 1%;
+    width: 300px;
+    padding: 10px;
+}
+
+.container-profile > .content > form > .button-group {
+    margin: 0 auto;
+    padding: 0;
+    width: 323px;
+}
+.container-profile > .content > form > .button-group > .mat-button {
+    padding: 10px;
+    width: 155px;
+}
+
+.container-profile > .content > form > .button-group > .mat-button:hover {
+    cursor: pointer;
+}
+
+.container-profile > .content > form > .button-group > .mat-button:disabled {
+    color: grey;
+    cursor: no-drop;
+}
+
+
+
+.action-button {
+    float: right;
+    background-color: white;
+}
+
+.action-button:disabled {
+    background-color: lightgrey;
+}
+
+.redirect-button {
+    float: left;
+    color: white;
+    background-color: rgba(235,28,36,0.8);
+}
+
+.container-profile > .content > form > .button-group > .mat-button.image-update-button {
+    float: left;
+}
+
+.container-profile > .content > form > .button-group > .mat-button.image-update-button > label {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.image-update-button > label:hover {
+    cursor: pointer;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 2%;
+    border-radius: 200px;
+}
+
+.container-profile > .content {
+    text-align:center;
+}
+
+.customError {
+    font-size: 12px;
+    color: red;
+}
+
+.customError > span {
+    text-align: left;
+}

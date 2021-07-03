@@ -1,0 +1,169 @@
+.container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.menu {
+    text-align: center;
+    background-color: azure;
+}
+
+.logo {
+    width: 200px;
+    height: 147px;
+    margin: 10px;
+}
+
+.section {
+    padding: 10px;
+    margin-left: -20px;
+}
+.section:hover{
+    background-color: #ff7373;
+    cursor: pointer;
+}
+
+.section.selected {
+    background-color: #ff3838;
+    font-weight: bold;
+    cursor: auto;
+}
+
+.section > .image > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.section > .image > .chat {
+    border-radius: 0;
+}
+
+.section > .text, .section > .image  {
+    margin-left: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.logout {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+}
+
+.logout > span {
+    color: red;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-thickness: 0.1em;
+    border-bottom-width: 1px;
+}
+
+.logout > span:hover {
+    cursor: pointer;
+}
+
+
+
+.chat-container {
+    width: 100%;
+    height: 100%;
+    background-color: lightyellow;
+}
+
+.chat-content {
+    width: 100%;
+    height: calc(100% - 86px);
+    overflow-y: scroll;
+}
+
+.chat-content > .message-container {
+    width:100%;
+    display:block;
+    min-height: 160px;
+}
+
+.chat-content > .message-container > .message-box {
+    float: left;
+    display: block;
+    border: 3px solid black;
+    padding: 10px;
+    margin: 40px 30px;
+    border-radius: 10px;
+    max-width: 50%;
+    background-color: lightgrey;
+    padding-top: 0;
+}
+
+.chat-content > .message-container > .own-message {
+    float:right;
+    display: block;
+    background-color: white;
+}
+
+.chat-content > .message-container > .message-box > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    margin-top: -35px;
+    margin-left: -35px;
+}
+
+.chat-content > .message-container > .message-box > .message-alias {
+    color: grey;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.chat-content > .message-container > .message-box > p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.interact-group {
+    width: calc(100% - 6px);
+    height: 80px;
+    border: 3px solid grey;
+    background-color: rgb(238, 238, 238);
+}
+
+.interact-group > .message-box {
+    width: 80%;
+    height: 40px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.interact-group > .send-btn {
+    width: 20%;
+    height: 40px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.interact-group > .message-box > input,
+.interact-group > .send-btn > button {
+    width: calc(100% - 20px);
+    height: 100%;
+}
+
+.interact-group > .message-box > input {
+    margin-left: 10px;
+    border: 0;
+    outline: 0;
+    padding-left: 10px;
+}
+
+.interact-group > .send-btn > button {
+    margin-left: 10px;
+    background-color: rgba(235, 28, 36, 0.8);
+    color: white;
+    cursor: pointer;
+}
+
+.interact-group > .send-btn > button:disabled {
+    background-color: rgba(235, 28, 36, 0.4);
+    cursor: no-drop;
+}
+

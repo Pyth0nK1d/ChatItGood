@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="content">
+        <img class="logo" src="assets/img/logo.png"/>
+        <form [formGroup]="loginForm">
+            <input id="email" type="text" i18n-placeholder placeholder="Email" formControlName="email">
+            <br/>
+            <input id="password" type="password" i18n-placeholder placeholder="Contraseña" formControlName="password">
+            <br/>
+            <div class="button-group">
+                <button i18n class="mat-button action-button" type="submit" [disabled]="!loginForm.valid" (click)="onSubmit()">Acceder</button>
+                <button i18n class="mat-button redirect-button" routerLink='/register' type="button">Registro</button>
+            </div>
+        </form>
+    </div>
+    
+</div>
+
