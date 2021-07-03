@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth-service/auth.service';
   templateUrl: './register-view.component.html',
   styleUrls: ['./register-view.component.css']
 })
-export class RegisterViewComponent {
+export class RegisterViewComponent implements OnInit {
 
   registerForm = new FormGroup({
     alias: new FormControl('', [Validators.required]),
@@ -17,6 +17,10 @@ export class RegisterViewComponent {
   });
 
   constructor(public authService: AuthService) { }
+
+  ngOnInit() {
+    this.disableLoader();
+  }
 
   onPasswordChange() {
     if (this.repeat_password.value == this.password.value) {
@@ -34,7 +38,22 @@ export class RegisterViewComponent {
     return this.registerForm.controls['repeatPassword'];
   }
 
+  private enableLoader(){
+    if(typeof objDiv === "undefined"){
+      var objDiv = document.getElementById("loader");
+    }
+    objDiv.style.display = "block";
+  }
+
+  private disableLoader(){
+    if(typeof objDiv === "undefined"){
+      var objDiv = document.getElementById("loader");
+    }
+    objDiv.style.display = "none";
+  }
+
   onSubmit() {
+    this.enableLoader();
     //console.warn(this.registerForm.errors);
     this.authService.SignUp(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.alias);
     //this.authService.SignIn(this.registerForm.value.email, this.registerForm.value.password);

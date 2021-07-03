@@ -2,7 +2,7 @@ import { Message } from '../../models/message';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { map, timestamp } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -29,18 +29,10 @@ export class FirestoreService {
       }
     ).then(onfulfilled => {
       this.autoscroll();
-      //console.log(res);
-      
     });
   }
   
-/*
-  public updateImagen(url: string): void {
-    this.firestore.doc(`imagen/${this.ID_IMAGEN}`).update({ url: url });
-  }
-*/
   private treatData(data: Message[]): Message[] {
-    //console.log("Getting new data");
     return data.map((message: Message) => (
       {
         alias: message.alias,
@@ -54,9 +46,9 @@ export class FirestoreService {
 
   private autoscroll(){
     // Scroll down chat
-    if(typeof objDiv === "undefined"){
-      var objDiv = document.getElementById("chat");
+    if(typeof scrolldiv === "undefined"){
+      var scrolldiv = document.getElementById("chat");
     }
-    objDiv.scrollTop = objDiv.scrollHeight;
+    scrolldiv.scrollTop = scrolldiv.scrollHeight;
   }
 }

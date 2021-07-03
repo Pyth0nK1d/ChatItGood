@@ -17,6 +17,7 @@ export class LoginViewComponent implements OnInit {
   constructor(public authService: AuthService, public router: Router) { }
 
   ngOnInit() {
+    this.disableLoader();
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
@@ -24,6 +25,7 @@ export class LoginViewComponent implements OnInit {
   }
 
   onSubmit() {
+    this.enableLoader();
     this.authService.SignIn(this.loginForm.value.email, this.loginForm.value.password);
     /*
     // TODO: Change this for auth method statement
@@ -31,6 +33,20 @@ export class LoginViewComponent implements OnInit {
       this.router.navigate(['/chat']);
     }
     */
+  }
+
+  private enableLoader(){
+    if(typeof objDiv === "undefined"){
+      var objDiv = document.getElementById("loader");
+    }
+    objDiv.style.display = "block";
+  }
+
+  private disableLoader(){
+    if(typeof objDiv === "undefined"){
+      var objDiv = document.getElementById("loader");
+    }
+    objDiv.style.display = "none";
   }
 
 }

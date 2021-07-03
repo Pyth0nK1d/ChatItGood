@@ -13,12 +13,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./chat-view.component.css']
 })
 export class ChatViewComponent implements OnInit, AfterContentInit, OnChanges, DoCheck, OnDestroy {
-  /*
-  public userData = {
-    photoURL: environment.baseWebUrl+"/assets/img/default-image.png"
-  };
 
-  */
   public messageList: Message[] = [];
 
   public userData = null;
@@ -36,6 +31,7 @@ export class ChatViewComponent implements OnInit, AfterContentInit, OnChanges, D
 
   ngOnInit() {
     //this.userData = JSON.parse(localStorage.getItem('user'));
+    this.enableLoader();
     var currentUser;
     this.afAuth.onAuthStateChanged(user => {
       if (user) {
@@ -66,6 +62,7 @@ export class ChatViewComponent implements OnInit, AfterContentInit, OnChanges, D
     });
 
     this.autoscroll();
+    this.disableLoader();
   }
 
   ngAfterContentInit(){
@@ -91,40 +88,29 @@ export class ChatViewComponent implements OnInit, AfterContentInit, OnChanges, D
 
   autoscroll(){
     // Scroll down chat
-    if(typeof objDiv === "undefined"){
-      var objDiv = document.getElementById("chat");
+    if(typeof scrolldiv === "undefined"){
+      var scrolldiv = document.getElementById("chat");
     }
-    objDiv.scrollTop = objDiv.scrollHeight;
+    scrolldiv.scrollTop = scrolldiv.scrollHeight;
   }
 
-/*
-  autoscroll() {
-    if(typeof messages === "undefined"){
-      var messages = document.getElementById("chat");
-    }
-    let newMessage = <HTMLElement>messages.lastElementChild;
-    if(newMessage !== null){
-      console.log(newMessage);
-      let newMessageStyles = getComputedStyle(newMessage);
-      let newMessageMargin = parseInt(newMessageStyles.marginBottom);
-      let newMessageHeight = newMessage.offsetHeight + newMessageMargin;
-
-      let visibleHeight = messages.offsetHeight;
-
-      let containerHeight = messages.scrollHeight;
-
-      let scrollOffset = messages.scrollTop + visibleHeight;
-
-      if(containerHeight - newMessageHeight <= scrollOffset) {
-        messages.scrollTop = messages.scrollHeight;
-      }
-    }
-    
-  }
-
-  */
   logout(){
+    this.enableLoader();
     this.authService.SignOut();
+  }
+
+  private enableLoader(){
+    if(typeof objDiv === "undefined"){
+      var objDiv = document.getElementById("loader");
+    }
+    objDiv.style.display = "block";
+  }
+
+  private disableLoader(){
+    if(typeof objDiv === "undefined"){
+      var objDiv = document.getElementById("loader");
+    }
+    objDiv.style.display = "none";
   }
 
   ngOnDestroy(){
