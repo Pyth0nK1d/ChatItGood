@@ -11,6 +11,10 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from './services/auth-service/auth.service';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { RootReducer } from './store/reducers/rootReducer';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,14 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    StoreModule.forRoot(RootReducer, {}),
+    StoreDevtoolsModule.instrument(
+      {
+        maxAge: 5
+      }
+    ),
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
