@@ -94,7 +94,8 @@
 }
 .container-profile > .content > form > .button-group > .mat-button {
     padding: 10px;
-    width: 155px;
+    width: 145px;
+    border: 1px solid gray;
 }
 
 .container-profile > .content > form > .button-group > .mat-button:hover {

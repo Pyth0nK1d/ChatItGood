@@ -42,15 +42,13 @@
                         <br/>
                     </div>
                     <div class="button-group">
-                        <button class="mat-button action-button image-update-button">
-                            <label for="file">
-                                <span i18n>Actualizar imagen</span>
-                                <input type="file"
-                                     id="file"
-                                     hidden
-                                     (change)="handleFileInput($event.target.files)">
-                            </label>
-                        </button>
+                        <label class="mat-button action-button image-update-button" for="file">
+                            <span i18n>Actualizar imagen</span>
+                            <input type="file"
+                                    id="file"
+                                    hidden
+                                    (change)="handleFileInput($event.target.files)">
+                        </label>
                         <button i18n class="mat-button action-button" type="submit" [disabled]="!profileForm.valid">Actualizar perfil</button>
                     </div>
                 </form>
