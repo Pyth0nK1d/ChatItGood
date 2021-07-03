@@ -72,7 +72,7 @@ export class AuthService {
 
         result.user.updateProfile({
           displayName: alias,
-          photoURL: environment.baseWebUrl+"/assets/img/default-image.png"
+          photoURL: "/assets/img/default-image.png"
         }).then(() => {
           this.SignIn(email, password);
           //this.SetUserData(result.user);
@@ -111,8 +111,7 @@ export class AuthService {
 
   async UpdateProfile(alias, email, password){
     return (await this.afAuth.currentUser).updateProfile({
-      displayName: alias,
-      //photoURL: environment.baseWebUrl+"/assets/img/default-image.png"
+      displayName: alias
     }).then(async () => {
       if(password.length > 0){
         (await this.afAuth.currentUser).updatePassword(password).then(function() {

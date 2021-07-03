@@ -20,7 +20,27 @@
         </div>
     </mat-drawer>
     <mat-drawer-content class="page-content">
-        Chat content!
+        <div class="chat-container">
+            <div id="chat" class="chat-content">
+                <div class="message-container" *ngFor="let message of messageList">
+                    <div [ngClass]="{'message-box': true, 'own-message': userData.email === message.email}" >
+                        <img class="message-image"[src]="message.photoURL" />
+                        <div class="message-alias">@{{message.alias}}</div>
+                        <p>{{message.text}}</p>
+                    </div>
+                </div>
+            </div>
+            <form [formGroup]="chatForm">
+                <div class="interact-group">
+                    <div class="message-box">
+                        <input type="text" formControlName="message" i18n-placeholder placeholder="Escribe un mensaje"/>
+                    </div>
+                    <div class="send-btn">
+                        <button i18n class="mat-button" [disabled]="!this.chatForm.value.message" (click)="sendMessage()">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </mat-drawer-content>
 </mat-drawer-container>
   

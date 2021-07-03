@@ -37,7 +37,7 @@ export class ProfileViewComponent implements OnInit {
           }
       }else{
         currentUser = {
-          photoURL: environment.baseWebUrl+"/assets/img/default-image.png"
+          photoURL: "/assets/img/default-image.png"
         };
         this.userData = currentUser;
       }
@@ -69,6 +69,7 @@ export class ProfileViewComponent implements OnInit {
   }
 
   async handleFileInput(files: FileList) {
+    this.enableLoader();
     this.fileToUpload = files.item(0);
     let metadata = { name: this.fileToUpload.name, size: this.fileToUpload.size };
     await this.storage.createImage(`${this.fileToUpload.name}`, this.fileToUpload, metadata);
@@ -76,18 +77,28 @@ export class ProfileViewComponent implements OnInit {
       .subscribe((url: string) => {
         this.authService.UpdateProfileImage(url);
         this.userData.photoURL = url;
-        /*
-        this.imagen.url = url;
-        this.actualizarImagen(url);
-        */
+        this.disableLoader();
       });
   }
 
-  onSubmit() {
-    //console.warn(this.registerForm.errors);
-    //this.authService.SignUp(this.profileForm.value.email, this.profileForm.value.password, this.profileForm.value.alias);
-    //this.authService.SignIn(this.registerForm.value.email, this.registerForm.value.password);
-    this.authService.UpdateProfile(this.profileForm.value.alias, this.profileForm.value.email, this.profileForm.value.password);
+  private enableLoader(){
+    if(typeof objDiv === "undefined"){
+      var objDiv = document.getElementById("loader");
+    }
+    objDiv.style.display = "block";
+  }
+
+  private disableLoader(){
+    if(typeof objDiv === "undefined"){
+      var objDiv = document.getElementById("loader");
+    }
+    objDiv.style.display = "none";
+  }
+
+  async onSubmit() {
+    this.enableLoader();
+    await this.authService.UpdateProfile(this.profileForm.value.alias, this.profileForm.value.email, this.profileForm.value.password);
+    this.disableLoader();
   }
 
 }
