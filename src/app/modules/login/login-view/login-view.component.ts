@@ -24,9 +24,10 @@ export class LoginViewComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     this.enableLoader();
-    this.authService.SignIn(this.loginForm.value.email, this.loginForm.value.password);
+    await this.authService.SignIn(this.loginForm.value.email, this.loginForm.value.password);
+    this.disableLoader();
     /*
     // TODO: Change this for auth method statement
     if(this.loginForm.value.email === 'dprieto93@hotmail.com'){

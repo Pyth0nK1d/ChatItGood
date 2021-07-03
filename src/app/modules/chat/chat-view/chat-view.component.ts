@@ -6,6 +6,7 @@ import { environment } from '../../../../environments/environment';
 import { Message } from 'src/app/models/message';
 import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 import { Subscription } from 'rxjs';
+import { LifeCycleDirective } from 'src/app/directives/life-cycle.directive';
 
 @Component({
   selector: 'app-chat-view',
@@ -24,7 +25,7 @@ export class ChatViewComponent implements OnInit, AfterContentInit, OnChanges, D
     message: new FormControl('', []),
   });
   
-  constructor(private firestore: FirestoreService, public authService: AuthService, public afAuth: AngularFireAuth) { }
+  constructor(private firestore: FirestoreService, public authService: AuthService, public afAuth: AngularFireAuth, public spy: LifeCycleDirective) { }
   ngOnChanges(changes: SimpleChanges): void {
     this.autoscroll();
   }

@@ -33,10 +33,10 @@
             <form [formGroup]="chatForm">
                 <div class="interact-group">
                     <div class="message-box">
-                        <input type="text" formControlName="message" placeholder="Escribe un mensaje"/>
+                        <input type="text" formControlName="message" i18n-placeholder placeholder="Escribe un mensaje"/>
                     </div>
                     <div class="send-btn">
-                        <button class="mat-button" [disabled]="!this.chatForm.value.message" (click)="sendMessage()">Enviar</button>
+                        <button i18n class="mat-button" [disabled]="!this.chatForm.value.message" (click)="sendMessage()">Enviar</button>
                     </div>
                 </div>
             </form>
