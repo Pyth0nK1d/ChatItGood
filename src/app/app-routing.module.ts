@@ -6,7 +6,7 @@ import { OnDemandPreloadStrategy } from './strategies/on-demand-preload-strategy
 const routes: Routes = [
   {
     path: 'login',
-    loadChildren: () => import('./modules/Login/Login.module').then(m => m.LoginModule),
+    loadChildren: () => import('./modules/login/login.module').then(m => m.LoginModule),
     data: {preload: true} 
   },
   {
